@@ -1,5 +1,7 @@
 package _00_Intro_to_Exceptions;
 
+import javax.swing.JOptionPane;
+
 public class ExceptionsDemo {
 
     /*
@@ -16,7 +18,7 @@ public class ExceptionsDemo {
     public static void testFiveOrGreater(int x) throws Exception {
         if (x < 5) {
             // This is where the Exception is actually thrown.
-            throw new Exception();
+            throw new Exception("hello");
         }
     }
 
@@ -39,12 +41,23 @@ public class ExceptionsDemo {
     public static void main(String[] args) {
 
         // 1. Create a try/catch block (Hint: type "try" and ctrl + space).
-
+try {
+	
+} catch (Exception e) {
+	// TODO: handle exception
+}
         /*
          * 2. Call the testFiveOrGreater method with a value less than 5 inside
          * the try block.
          */
 
+try {
+	testFiveOrGreater(4);
+} catch (Exception e) {
+	// TODO: handle exception
+	e.printStackTrace();
+	
+}
         /*
          * 3. Call e.printStackTrace() in the catch block. This prints out the
          * last methods called during your program's execution to the console in
@@ -52,7 +65,16 @@ public class ExceptionsDemo {
          */
 
         // 4. Run the program. Did the stack trace print out?
-
+try {
+	NegativeNumberException.testPositive(-5);
+} catch (NegativeNumberException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	NegativeNumberException.scaryPopUp();
+}
+finally {
+	JOptionPane.showMessageDialog(null, "Your computer is okay");
+}
     }
 
     /*
