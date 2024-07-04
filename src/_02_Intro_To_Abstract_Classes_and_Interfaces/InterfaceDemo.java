@@ -1,6 +1,6 @@
 package _02_Intro_To_Abstract_Classes_and_Interfaces;
 
-/*
+/* 
  * An interface could be considered a class that is completely abstract. Like an 
  * abstract class it can contain abstract methods, but cannot contain member 
  * variables(with one exception) or implemented methods.
@@ -39,9 +39,13 @@ public interface InterfaceDemo {
 interface DemoInterface {
 
     public String faceDemo();
+    
 }
 
 /*
  * 1. Implement both InterfaceDemo and DemoInterface in the class you created
  * for the AbstractClassDemo
  */
+
+
+
