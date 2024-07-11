@@ -5,13 +5,6 @@ public class BackwardsString implements TextFunkifier {
     private String unfunkifiedText;
 
     public BackwardsString(String unfunkifiedText) {
-    	String e;
-char[] backwards= unfunkifiedText.toCharArray();
-for (int i = backwards.length; i >=0 ; i++) {
-	 e="";
-	e=backwards[i]+e;
-	unfunkifiedText=e;
-}
 
         this.unfunkifiedText = unfunkifiedText;
 
@@ -19,8 +12,14 @@ for (int i = backwards.length; i >=0 ; i++) {
 
     @Override
     public String funkifyText() {
+    	String e="";
+char[] backwards= unfunkifiedText.toCharArray();
+for (int i = backwards.length-1; i >=0 ; i--) {
+	
+	e+=backwards[i];
+}
 
-        return null;
+        return e;
 
     }
 }
