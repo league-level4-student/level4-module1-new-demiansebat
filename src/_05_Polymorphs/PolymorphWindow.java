@@ -54,15 +54,16 @@ import javax.swing.Timer;
 
 public class PolymorphWindow extends JPanel implements ActionListener {
 
-    public static final int WIDTH = 900;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 500;
+    public static final int HEIGHT = 500;
 
     private JFrame window;
     private Timer timer;
 
     Polymorph bluePoly;
     Polymorph redPoly;
-
+    Polymorph movingPoly;
+    
     public static void main(String[] args) {
         new PolymorphWindow().buildWindow();
     }
@@ -70,15 +71,16 @@ public class PolymorphWindow extends JPanel implements ActionListener {
     public void buildWindow() {
         window = new JFrame("IT'S MORPHIN' TIME!");
         window.add(this);
-        window.getContentPane().setPreferredSize(new Dimension(500, 500));
+        window.getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
         window.setVisible(true);
 
         bluePoly = new BluePolymorph(50, 50, 50, 50);
         redPoly= new RedPolymorph(100,100, 50,50);
+        movingPoly=new MovingMorph(200,200,50,50);
 
-        timer = new Timer(1000 / 30, this);
+        timer = new Timer(1000 / 60, this);
         timer.start();
     }
 
@@ -90,6 +92,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
         // draw polymorph
         bluePoly.draw(g);
         redPoly.draw(g);
+        movingPoly.draw(g);
     }
 
     @Override
@@ -97,6 +100,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
         repaint();
         bluePoly.update();
         redPoly.update();
+        movingPoly.update();
 
     }
 }
