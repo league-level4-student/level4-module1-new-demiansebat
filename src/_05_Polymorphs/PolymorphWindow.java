@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,9 +34,10 @@ import javax.swing.Timer;
  * 
  * 9. Create a MovingMorph object in your PolymorphWindow class and test it
  * by calling its draw and update methods.
- * 
  * 10. Now, delete all references to Polymorphs subclasses inside your
  * PolymorphWindow class.
+ * 
+ * 
  * 
  * 11. Create an ArrayList of Polymorph inside your PolymorphWindow class.
  * 
@@ -59,11 +61,8 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 
     private JFrame window;
     private Timer timer;
-
-    Polymorph bluePoly;
-    Polymorph redPoly;
-    Polymorph movingPoly;
-    
+    ArrayList<Polymorph>poly= new ArrayList<>();
+  
     public static void main(String[] args) {
         new PolymorphWindow().buildWindow();
     }
@@ -75,11 +74,13 @@ public class PolymorphWindow extends JPanel implements ActionListener {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.pack();
         window.setVisible(true);
-
-        bluePoly = new BluePolymorph(50, 50, 50, 50);
-        redPoly= new RedPolymorph(100,100, 50,50);
-        movingPoly=new MovingMorph(200,200,50,50);
-
+       
+        MouseMorph mouse = new MouseMorph(300,300,50,50);
+        window.addMouseListener(mouse);
+poly.add(new RedPolymorph(100,100,50,50));
+poly.add(new BluePolymorph(200,200,50,50));
+poly.add(new MovingMorph(300,300,50,50));
+poly.add(mouse);
         timer = new Timer(1000 / 60, this);
         timer.start();
     }
@@ -88,19 +89,16 @@ public class PolymorphWindow extends JPanel implements ActionListener {
         // draw background
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0, 0, 500, 500);
-
-        // draw polymorph
-        bluePoly.draw(g);
-        redPoly.draw(g);
-        movingPoly.draw(g);
+for(Polymorph p:poly) {
+	p.update();
+	p.draw(g);
+}
+  
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
-        bluePoly.update();
-        redPoly.update();
-        movingPoly.update();
-
+    
     }
 }
