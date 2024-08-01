@@ -4,8 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class MouseMorph extends Polymorph implements MouseListener{
+public class MouseMorph extends Polymorph implements MouseMotionListener{
 int xSpeed=7;
 	public MouseMorph(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -18,52 +19,33 @@ int xSpeed=7;
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		setX(getX()+xSpeed);
-		if(getX()+getWidth()>=PolymorphWindow.WIDTH || getX()<=0){
-			xSpeed=-xSpeed;
-		}
+
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.setColor(Color.yellow);
+		g.setColor(Color.GREEN);
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 	}
 
 
+
+
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		int Mousex=arg0.getX();
+		int Mousey=arg0.getY();
+		setY(Mousey-getHeight());
+		setX(Mousex-getWidth()/2);
 	}
 
 }
