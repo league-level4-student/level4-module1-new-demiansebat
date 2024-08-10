@@ -1,5 +1,6 @@
 package _06_Hospital;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneralPractitioner extends Doctor{
@@ -17,7 +18,10 @@ public class GeneralPractitioner extends Doctor{
 	@Override
 	protected void doMedicine() {
 		// TODO Auto-generated method stub
-		
+		ArrayList <Patient>allPatients= (ArrayList) getPatients();
+		for(Patient a:allPatients) {
+			a.checkPulse();
+		}
 	}
 
 

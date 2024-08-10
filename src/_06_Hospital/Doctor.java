@@ -8,10 +8,13 @@ public abstract class Doctor {
 	
 	protected abstract void doMedicine();
 
-	protected void assignPatient(Patient patient) {
+	protected void assignPatient(Patient patient) throws DoctorFullException {
 if(patientList.size()<3) {
 	patientList.add(patient);
 		}
+else {
+	throw new DoctorFullException();
+}
 
 		
 	}

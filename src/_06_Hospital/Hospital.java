@@ -12,7 +12,7 @@ public class Hospital {
 	}
 
 	public void addPatient(Patient patient) {
-patientList.add(patient);		
+		patientList.add(patient);		
 	}
 
 	public List<Doctor> getDoctors() {
@@ -20,17 +20,25 @@ patientList.add(patient);
 	}
 
 	public List<Patient> getPatients() {
-		
+
 		return patientList;
 	}
 
-	public void assignPatientsToDoctors() {
-	for( Patient p: patientList) {
-	for(Doctor d:doctorList) {
-		d.assignPatient(p);
-	}
+	public void assignPatientsToDoctors(){
+		for( Patient p: patientList) {
+			for(Doctor d:doctorList) {
+				try {
+					d.assignPatient(p);
+					break;
+				} catch (DoctorFullException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+			}
+
+		}
 		
-	}
 		
+
 	}
 }
